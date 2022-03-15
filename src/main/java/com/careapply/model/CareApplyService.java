@@ -2,12 +2,18 @@ package com.careapply.model;
 
 import java.sql.Timestamp;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
 public class CareApplyService {
+
+	@Autowired
 	private CareApplyDAO dao;
 
-	public CareApplyService() {
-		dao = new CareApplyDAOImpl();
-	}
+//	public CareApplyService() {
+//		dao = new CareApplyDAOImpl();
+//	}
 
 	// 取消所有應徵(需求單ID)
 	public void refuseAllApply(Integer id) {

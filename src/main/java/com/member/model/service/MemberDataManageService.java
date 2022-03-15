@@ -4,9 +4,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.member.model.dao.impl.BackendMemberDaoImpl;
 import com.member.model.vo.MemberDataManageVO;
-
+@Service
 public class MemberDataManageService {
 	private BackendMemberDaoImpl dao = new BackendMemberDaoImpl();
 	

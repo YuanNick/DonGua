@@ -1,24 +1,15 @@
 package com.meal.model.dao.impl;
 
-import java.math.BigDecimal;
-import java.nio.charset.StandardCharsets;
-import java.security.spec.DSAGenParameterSpec;
 import java.sql.Blob;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Base64;
-import java.util.Calendar;
 import java.util.List;
 
 import javax.naming.Context;
@@ -26,13 +17,14 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import org.springframework.stereotype.Repository;
+
 import com.meal.model.dao.MealDAO;
 import com.meal.model.vo.MealVO;
-import com.mysql.cj.exceptions.RSAException;
-import com.mysql.cj.protocol.Resultset;
 import com.utils.SQLUtil;
 import com.utils.SQLUtils;
 
+@Repository
 public class MealDAOImpl implements MealDAO {
 	
 	private static DataSource ds = null ;

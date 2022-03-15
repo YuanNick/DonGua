@@ -4,12 +4,13 @@ import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.List;
 
-public class MealOrderService {
-	private MealOrderDAO dao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-	public MealOrderService() {
-		dao = new MealOrderDAOImpl();
-	}
+@Service
+public class MealOrderService {
+	@Autowired
+	private MealOrderDAO dao;
 
 	public MealOrderVO addMealOrder(Long memId, BigDecimal orderAmount, String addr, String contactNumber,
 			String contactName, Date startDate, Integer totalDays, String mealTime, String orderStatus) {
@@ -42,14 +43,6 @@ public class MealOrderService {
 		dao.update(mealOrderVO);
 		return mealOrderVO;
 	}
-
-//	public MealOrderVO findByOrderId(Long mealOrderId) {
-//		return dao.findByOrderId(mealOrderId);
-//	}
-//
-//	public List<MealOrderVO> findByOrderStatus(String orderStatus) {
-//		return dao.findByOrderStatus(orderStatus);
-//	}
 
 	public List<MealOrderVO> findByMemId(Long memId) {
 		return dao.findByMemId(memId);

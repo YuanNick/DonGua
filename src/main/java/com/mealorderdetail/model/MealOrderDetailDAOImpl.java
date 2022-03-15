@@ -8,11 +8,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mealorder.model.MealOrderVO;
-import com.mysql.cj.x.protobuf.MysqlxCrud.Insert;
+import org.springframework.stereotype.Repository;
+
 import com.utils.SQLUtil;
 
-
+@Repository
 public class MealOrderDetailDAOImpl implements MealOrderDetailDAO {
 	private static final String INSERT= "INSERT INTO MEAL_ORDER_DETAIL(MEAL_ORDER_ID, MEAL_NO, MEAL_COUNT, MEAL_AMOUNT) VALUES(?,?,?,?)";
 	private static final String GET_ALL_ORDERID= "SELECT a.MEAL_NO, a.MEAL_COUNT, a.MEAL_AMOUNT, b.MEAL_NAME, b.MEAL_PRICE\r\n"

@@ -1,8 +1,6 @@
 package com.mealorder.model;
 
-import java.io.Console;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,11 +9,11 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mealorderdetail.model.MealOrderDetailDAOImpl;
-import com.mealorderdetail.model.MealOrderDetailVO;
+import org.springframework.stereotype.Repository;
+
 import com.utils.SQLUtil;
 
-
+@Repository
 public class MealOrderDAOImpl implements MealOrderDAO {
 	private static final String INSERT_MEALORDER = "INSERT INTO MEAL_ORDER(MEM_ID, ORDER_AMOUNT, ADDR, CONTACT_NUMBER, CONTACT_NAME, START_DATE, TOTAL_DAYS, MEAL_TIME, ORDER_STATUS) VALUES(?,?,?,?,?,?,?,?,?)";
 	private static final String UPDATE = "UPDATE MEAL_ORDER SET ORDER_STATUS = ?, UPDATE_TIME = current_timestamp() WHERE MEAL_ORDER_ID = ?";

@@ -7,23 +7,28 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class CarerMemApplyDAOImpl implements CarerMemApplyDAO {
 
 	// DataSource
-	private static DataSource ds = null;
-	static {
-		try {
-			Context ctx = new InitialContext();
-			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/group6");
-		} catch (NamingException ne) {
-			ne.printStackTrace();
-		}
-	}
+//	private static DataSource ds = null;
+	
+	@Autowired
+	private DataSource ds;
+	
+//	static {
+//		try {
+//			Context ctx = new InitialContext();
+//			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/group6");
+//		} catch (NamingException ne) {
+//			ne.printStackTrace();
+//		}
+//	}
 
 	// 新增申請者的照護資料
 	private static final String INSERT_DATA_STMT = "INSERT INTO CARER_MEMBER_APPLY (MEM_ID, SERVICE_DIST_NO, BANK_CODE, BANK_ACCT, SERVICE_TYPE, INTRO, PRICE_HOUR, PRICE_HALFDAY, PRICE_DAY) VALUES (?,?,?,?,?,?,?,?,?)";

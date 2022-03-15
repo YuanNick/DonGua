@@ -13,8 +13,10 @@ import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 
-import com.utils.SQLUtil;
+import org.springframework.stereotype.Repository;
 
+import com.utils.SQLUtil;
+@Repository
 public class CollectionDAOImpl implements CollectionDAO {
 
 	@Override

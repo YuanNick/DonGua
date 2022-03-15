@@ -3,13 +3,17 @@ package com.infomanage.model;
 import java.sql.Timestamp;
 import java.util.List;
 
-public class InfoService {
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
+public class InfoService {
+	@Autowired
 	private InfoDAO dao;
 
-	public InfoService() {
-		dao = new InfoDAOImpl();
-	}
+//	public InfoService() {
+//		dao = new InfoDAOImpl();
+//	}
 
 	//NEWS
 	public List<InfoVO> getAllNews() {

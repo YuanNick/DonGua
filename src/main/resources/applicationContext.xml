@@ -7,7 +7,7 @@
 		http://www.springframework.org/schema/context
 		http://www.springframework.org/schema/context/spring-context.xsd">
 	
-<!-- 	<context:component-scan base-package="web.*.*.impl" /> -->
+	<context:component-scan base-package="com.*.model,com.*.model.*.impl" />
 	
 	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
 		<property name="resourceRef" value="true" />

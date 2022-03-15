@@ -1,3 +1,4 @@
+<%@page import="com.common.util.CommonUtil"%>
 <%@page import="com.meal.model.service.MealService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -8,12 +9,17 @@
 
 
 <%
-	MealService mealSvc = new MealService();
+	MealService mealSvc = CommonUtil.getBean(getServletContext(), MealService.class);
+
+// 	MealService mealSvc = new MealService();
 	List<MealVO> list = mealSvc.getAll();
 	pageContext.setAttribute("list", list);
+	
+	
+	MealImgService mealImgSvc = CommonUtil.getBean(getServletContext(), MealImgService.class);
 %>
 
-<jsp:useBean id="mealImgSvc" scope="page" class="com.mealimg.model.MealImgService" />
+<%-- <jsp:useBean id="mealImgSvc" scope="page" class="com.mealimg.model.MealImgService" /> --%>
 <!DOCTYPE html>
 <html>
 <head>

@@ -2,7 +2,6 @@ package com.carermem.model;
 
 import java.io.InputStream;
 import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -11,15 +10,16 @@ import org.springframework.stereotype.Service;
 
 import com.careskills.model.CareSkillsVO;
 import com.file.model.FileDAO;
-import com.file.model.FileDAOImpl;
 import com.file.model.FileVO;
 import com.member.model.vo.MemberVO;
 @Service
 public class CarerMemService {
 
+	@Autowired
 	private CarerMemDAO dao;
+	@Autowired
 	private FileDAO fdao;
-@Autowired
+
 //	public CarerMemService() {
 //		dao = new CarerMemDAOImpl();
 //		fdao = new FileDAOImpl();

@@ -18,13 +18,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.utils.SQLUtil;
+
 @Repository
 public class FileDAOImpl implements FileDAO {
 
 	// DataSource
 	@Autowired
 	private DataSource ds;
-	
+
 //	private static DataSource ds = null;
 //	static {
 //		try {
@@ -43,7 +44,7 @@ public class FileDAOImpl implements FileDAO {
 
 	// 更新照護員照片
 	private static final String UPDATE_CARERMEM_PIC = "UPDATE FILE SET FILE_CONTENT = ? WHERE FILE_TYPE_NO = ? AND CARER_ID = ?";
-	
+
 	@Override
 	public void insertApplyFile(FileVO fileVo, InputStream inputStream) {
 		Connection con = null;
@@ -131,7 +132,7 @@ public class FileDAOImpl implements FileDAO {
 		}
 		return result;
 	}
-	
+
 	// 更新照護員照片
 	@Override
 	public int[] updateCarerPic(List<FileVO> fileVoList, List<InputStream> inputStreamList) {
@@ -143,7 +144,7 @@ public class FileDAOImpl implements FileDAO {
 			pstmt = con.prepareStatement(UPDATE_CARERMEM_PIC);
 			/** 設定不自動提交，以便於在出現異常的時候資料庫回滾 **/
 			con.setAutoCommit(false);
-		
+
 			for (int i = 0; i < fileVoList.size(); i++) {
 				FileVO fileVo = fileVoList.get(i);
 				InputStream inputStream = inputStreamList.get(i);
@@ -183,9 +184,8 @@ public class FileDAOImpl implements FileDAO {
 			}
 		}
 		return result;
-		
+
 	}
-	
 
 	@Override
 	public FileVO findHeadShotByCarerId(Integer carerId) {
@@ -353,5 +353,4 @@ public class FileDAOImpl implements FileDAO {
 //		}
 //	}
 
-	
 }

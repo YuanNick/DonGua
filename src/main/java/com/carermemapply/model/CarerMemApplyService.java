@@ -14,11 +14,13 @@ import com.file.model.FileVO;
 @Service
 public class CarerMemApplyService {
 
+	@Autowired
 	private CarerMemApplyDAO cmadao;
+	@Autowired
 	private CareSkillsDAO csdao;
+	@Autowired
 	private FileDAO fdao;
 	
-	@Autowired
 //	public CarerMemApplyService() {
 //		cmadao = new CarerMemApplyDAOImpl();
 //		csdao = new CarerSkillsDAOImpl();

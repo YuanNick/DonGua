@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class FileService {
 	
+	@Autowired
 	private FileDAO dao;
 	
-	@Autowired
 //	public FileService() {
 //		dao = new FileDAOImpl();
 //	}

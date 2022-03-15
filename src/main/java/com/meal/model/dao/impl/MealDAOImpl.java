@@ -17,6 +17,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.meal.model.dao.MealDAO;
@@ -27,16 +28,10 @@ import com.utils.SQLUtils;
 @Repository
 public class MealDAOImpl implements MealDAO {
 	
-	private static DataSource ds = null ;
+	@Autowired
+	private static DataSource ds ;
 	
-	static {
-		try {
-			Context ctx = new InitialContext();
-			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/group6");
-		} catch (NamingException e) {
-			e.printStackTrace();
-		}
-	}
+
 	private static final String CREATE_MEAL = "INSERT INTO MEAL(MEAL_NO, MEAL_NAME, MEAL_PRICE, MEAL_INTRODUCE)" + "VALUES(?,?,?,?)";
 	private static final String CREATE_MEAL_PIC = "INSERT INTO MEAL_IMAGE(MEAL_IMG_FILE, MEAL_NO)" + "VALUES(?,?)";
 	private static final String GET_ALL_MEAL = "SELECT * FROM MEAL WHERE MEAL_STATUS =1 ";

@@ -14,6 +14,7 @@ public class MealOrderDetailService {
 	private MealOrderDetailDAO dao;
 	@Autowired
 	private MealService mealSvc;
+	
 	BigDecimal price;
 	BigDecimal count;
 	

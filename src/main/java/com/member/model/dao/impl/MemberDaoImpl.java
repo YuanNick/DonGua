@@ -5,11 +5,11 @@ import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
+
+import org.springframework.stereotype.Repository;
 
 import com.member.model.dao.MemberDao;
 import com.member.model.vo.MemberDataSettingVO;
@@ -17,6 +17,7 @@ import com.member.model.vo.MemberRegistVO;
 import com.member.model.vo.MemberVO;
 import com.utils.SQLUtils;
 
+@Repository
 public class MemberDaoImpl implements MemberDao{
 
 	@Override

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.common.model.service.JSONParse;
+import com.common.util.CommonUtil;
 import com.google.gson.Gson;
 import com.member.model.service.MemberLoginService;
 import com.member.model.vo.CommonRes;
@@ -23,6 +24,12 @@ import com.mysql.cj.util.StringUtils;
 public class MemberLoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
+	private MemberLoginService memService ;
+	
+	@Override
+	public void init() throws ServletException {
+		memService = CommonUtil.getBean(getServletContext(), MemberLoginService.class);
+	}
     public MemberLoginController() {
         super();
         // TODO Auto-generated constructor stub
@@ -47,7 +54,7 @@ public class MemberLoginController extends HttpServlet {
 		response.setCharacterEncoding("UTF8");
 		response.setContentType("text/html; charset=UTF-8");
 		
-		MemberLoginService memService = new  MemberLoginService();
+		
 		CommonRes<MemberLoginRes> res = new CommonRes<>();
 		MemberLoginRes memberLoginRes = memService.getMemberToken(account,password);
 //		if("".equals(token)) 把不會發生nullPointerException的物件放前面

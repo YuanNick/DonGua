@@ -6,9 +6,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class CareSkillsService {
 
+	@Autowired
 	private CareSkillsDAO csdao;
 	
-	@Autowired
 //	public CareSkillsService () {
 //		csdao = new CarerSkillsDAOImpl();
 //	}

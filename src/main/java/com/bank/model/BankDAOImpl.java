@@ -7,22 +7,26 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class BankDAOImpl implements BankDAO {
 
-	private static DataSource ds = null;
-	static {
-		try {
-			Context ctx = new InitialContext();
-			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/group6");
-		} catch (NamingException ne) {
-			ne.printStackTrace();
-		}
-	}
+	@Autowired
+	private DataSource ds;
+	
+//	private static DataSource ds = null;
+//	static {
+//		try {
+//			Context ctx = new InitialContext();
+//			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/group6");
+//		} catch (NamingException ne) {
+//			ne.printStackTrace();
+//		}
+//	}
 
 	private static final String GET_ALL_STMT = "SELECT BANK_CODE, BANK_NAME FROM BANK";
 

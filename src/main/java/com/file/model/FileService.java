@@ -2,12 +2,18 @@ package com.file.model;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
 public class FileService {
 	
 	private FileDAO dao;
-	public FileService() {
-		dao = new FileDAOImpl();
-	}
+	
+	@Autowired
+//	public FileService() {
+//		dao = new FileDAOImpl();
+//	}
 	
 	public FileVO getHeadShot(Integer carerId) {
 		return dao.findHeadShotByCarerId(carerId);

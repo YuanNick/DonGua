@@ -1,23 +1,29 @@
 package com.carermemapply.model;
 
 import java.io.InputStream;
-import java.sql.Blob;
 import java.util.List;
 
-import com.careskills.model.*;
-import com.file.model.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import com.careskills.model.CareSkillsDAO;
+import com.careskills.model.CareSkillsVO;
+import com.file.model.FileDAO;
+import com.file.model.FileVO;
+
+@Service
 public class CarerMemApplyService {
 
 	private CarerMemApplyDAO cmadao;
 	private CareSkillsDAO csdao;
 	private FileDAO fdao;
 	
-	public CarerMemApplyService() {
-		cmadao = new CarerMemApplyDAOImpl();
-		csdao = new CarerSkillsDAOImpl();
-		fdao = new FileDAOImpl();
-	}
+	@Autowired
+//	public CarerMemApplyService() {
+//		cmadao = new CarerMemApplyDAOImpl();
+//		csdao = new CarerSkillsDAOImpl();
+//		fdao = new FileDAOImpl();
+//	}
 	
 	public CarerMemApplyVO insertData(Integer memID, String serviceDistNo, String bankCode, String bankAcct, String serviceType,
 			String intro, Double priceHour, Double priceHalfday, Double priceDay) {

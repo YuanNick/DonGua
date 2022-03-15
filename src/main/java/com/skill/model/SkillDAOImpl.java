@@ -15,6 +15,7 @@ import javax.sql.DataSource;
 import org.springframework.stereotype.Repository;
 
 import com.careskills.model.CareSkillsVO;
+
 @Repository
 public class SkillDAOImpl implements SkillDAO {
 

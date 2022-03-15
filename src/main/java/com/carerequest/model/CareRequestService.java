@@ -5,16 +5,22 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.careapply.model.*;
 
 import com.requesttab.model.*;
 
+@Service
 public class CareRequestService {
+	
+	@Autowired
 	private CareRequestDAO dao;
 
-	public CareRequestService() {
-		dao = new CareRequestDAOImpl();
-	}
+//	public CareRequestService() {
+//		dao = new CareRequestDAOImpl();
+//	}
 
 	// 取得需求單(需求單ID)
 	public CareRequestVO getRequest(Integer id) {

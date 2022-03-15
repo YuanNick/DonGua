@@ -10,9 +10,11 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.utils.SQLUtil;
 
-
+@Repository
 public class InfoDAOImpl implements InfoDAO {
 
 	@Override

@@ -14,9 +14,11 @@ import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.utils.SQLUtil;
 
-
+@Repository
 public class MealImgDAOImpl implements MealImgDAO {
 	private static final String GET_ALL = "SELECT MEAL_IMG_ID, MEAL_IMG_FILE, MEAL_NO, CREATE_TIME, UPDATE_TIME FROM MEAL_IMAGE";
 

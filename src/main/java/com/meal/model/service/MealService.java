@@ -1,33 +1,25 @@
 package com.meal.model.service;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-import com.meal.model.dao.impl.MealDAOImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.meal.model.dao.MealDAO;
 import com.meal.model.vo.MealVO;
-import com.utils.ConnectionInstance;
 
-
+@Service
 public class MealService {
-	private static DataSource ds = null ;
+	@Autowired
+	private static DataSource ds;
 	
-	static {
-		try {
-			Context ctx = new InitialContext();
-			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/group6");
-		} catch (NamingException e) {
-			e.printStackTrace();
-		}
-	}
+	@Autowired
+	private MealDAO dao;
 	public boolean insertMael(MealVO meal) {
-		MealDAOImpl dao = new MealDAOImpl();
 		boolean ok = false;
 		System.out.println(meal.getMealNo());
 		try (Connection conn = ds.getConnection()) {
@@ -69,27 +61,21 @@ public class MealService {
 	}
 	
 	public List<MealVO> getAll() {
-		MealDAOImpl dao = new MealDAOImpl();
 		return dao.getAll();
 	}
 	public List<MealVO> getAllMeal(){
-		MealDAOImpl dao = new MealDAOImpl();
 		return dao.getAllMeal();
 	}
 	public MealVO getPrice(String mealNo) {
-		MealDAOImpl dao = new MealDAOImpl();
 		return dao.getPrice(mealNo);
 	}
 	public MealVO getOneMeal(String mealNo) {
-		MealDAOImpl dao = new MealDAOImpl();
 		return dao.findByMealNo(mealNo);
 	}
 	public int updateOneMeal(MealVO mealVO) throws SQLException {
-		MealDAOImpl dao = new MealDAOImpl();
 		return dao.updateMeal(mealVO);
 	}
 	public int deleteOneMeal(String mealNo) throws SQLException {
-		MealDAOImpl dao = new MealDAOImpl();
 		return dao.deleteMeal(mealNo);
 	}
 }

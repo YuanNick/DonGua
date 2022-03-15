@@ -3,18 +3,19 @@ package com.mealorderdetail.model;
 import java.math.BigDecimal;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.meal.model.service.MealService;
 
-
+@Service
 public class MealOrderDetailService {
+	@Autowired
 	private MealOrderDetailDAO dao;
-	MealService mealSvc = new MealService();
+	@Autowired
+	private MealService mealSvc;
 	BigDecimal price;
 	BigDecimal count;
-	
-	public MealOrderDetailService() {
-		dao = new MealOrderDetailDAOImpl();
-	}
 	
 	public MealOrderDetailVO addOrderDetail(Long orderId, String[] mealNoList, String[] mealQtyList) {
 		MealOrderDetailVO mealOrderDetailVO = new MealOrderDetailVO();

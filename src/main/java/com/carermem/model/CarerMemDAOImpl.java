@@ -18,12 +18,14 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import org.springframework.stereotype.Repository;
+
 import com.careskills.model.CareSkillsVO;
 import com.file.model.FileVO;
 import com.member.model.vo.MemberVO;
 import com.utils.CarerSearchUtils;
 import com.utils.SQLUtil;
-
+@Repository
 public class CarerMemDAOImpl implements CarerMemDAO {
 
 	// DataSource

@@ -1,20 +1,27 @@
 package com.member.model.service;
 
-import com.carer.model.dao.impl.CarerDAOImpl;
-import com.common.model.service.JWTokenUtils;
-import com.member.model.dao.impl.MemberDaoImpl;
-import com.member.model.vo.MemberLoginRes;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import com.carer.model.dao.CarerDAO;
+import com.common.model.service.JWTokenUtils;
+import com.member.model.dao.MemberDao;
+import com.member.model.vo.MemberLoginRes;
+@Service
 public class MemberLoginService {
+	@Autowired
+	private MemberDao dao;
+	@Autowired 
+	private CarerDAO carerDao;
 	public MemberLoginRes getMemberToken(String account,String password) {
-		MemberDaoImpl dao = new MemberDaoImpl();
-		CarerDAOImpl carerDaoImpl = new CarerDAOImpl();
+//		MemberDaoImpl dao= new MemberDaoImpl();
+//		CarerDAOImpl carerDaoImpl = new CarerDAOImpl();
 		String token = "";
 		MemberLoginRes memberLoginRes = new MemberLoginRes("",""); 
 		if (account != null && password != null) {
 			try {
 			long MemberId = dao.isMemberExist(account,password);
-			long CareId = carerDaoImpl.findCarerByAcctAndPwd(account, password);
+			long CareId = carerDao.findCarerByAcctAndPwd(account, password);
 			
 			if(MemberId ==-1) {
 				memberLoginRes.setToken("StatusError");

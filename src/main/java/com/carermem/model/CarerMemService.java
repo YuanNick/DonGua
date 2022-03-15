@@ -6,21 +6,24 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.careskills.model.CareSkillsVO;
 import com.file.model.FileDAO;
 import com.file.model.FileDAOImpl;
 import com.file.model.FileVO;
 import com.member.model.vo.MemberVO;
-
+@Service
 public class CarerMemService {
 
 	private CarerMemDAO dao;
 	private FileDAO fdao;
-
-	public CarerMemService() {
-		dao = new CarerMemDAOImpl();
-		fdao = new FileDAOImpl();
-	}
+@Autowired
+//	public CarerMemService() {
+//		dao = new CarerMemDAOImpl();
+//		fdao = new FileDAOImpl();
+//	}
 
 	public CarerMemVO getOneCarer(Integer carerId) {
 		return dao.findByCarerId(carerId);

@@ -2,12 +2,17 @@ package com.systemnotification.model;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
 public class SystemNotificationService {
+	@Autowired
 	SystemNotificationDAO dao;
 
-	public SystemNotificationService() {
-		dao = new SystemNotificationJDBCDAO();
-	}
+//	public SystemNotificationService() {
+//		dao = new SystemNotificationJDBCDAO();
+//	}
 
 	// 存入通知(通知者ID, 通知種類編號)
 	public void saveNotification(Integer notifyId, Integer orderId, String no) {

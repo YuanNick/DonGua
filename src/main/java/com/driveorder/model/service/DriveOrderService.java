@@ -5,15 +5,21 @@ import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.driveorder.model.dao.impl.DriveOrderJNDIDAOImpl;
 import com.driveorder.model.vo.DriveOrderVO;
 
+@Service
 public class DriveOrderService {
+	
+	@Autowired
 	private DriveOrderJNDIDAOImpl dao;
 
-	public DriveOrderService() {
-		dao = new DriveOrderJNDIDAOImpl();
-	}
+//	public DriveOrderService() {
+//		dao = new DriveOrderJNDIDAOImpl();
+//	}
 
 	public DriveOrderVO addDriverOrder(DriveOrderVO driverOrderVO) {
 		return dao.insert(driverOrderVO);

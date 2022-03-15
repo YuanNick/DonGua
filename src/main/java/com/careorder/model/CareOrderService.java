@@ -2,16 +2,21 @@ package com.careorder.model;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.careapply.model.*;
 import com.carerequest.model.*;
 
+@Service
 public class CareOrderService {
 
+	@Autowired
 	private CareOrderDAO dao;
 
-	public CareOrderService() {
-		dao = new CareOrderDAOImpl();
-	}
+//	public CareOrderService() {
+//		dao = new CareOrderDAOImpl();
+//	}
 
 	// 取得訂單(訂單ID)
 	public CareOrderSVO getOrder(Integer id) {

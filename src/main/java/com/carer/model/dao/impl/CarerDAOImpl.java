@@ -5,9 +5,12 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import org.springframework.stereotype.Repository;
+
 import com.carer.model.dao.CarerDAO;
 import com.utils.SQLUtils;
 
+@Repository
 public class CarerDAOImpl implements CarerDAO {
 
 	@Override

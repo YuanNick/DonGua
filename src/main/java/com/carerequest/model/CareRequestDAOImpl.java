@@ -10,11 +10,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.stereotype.Repository;
+
 import com.careapply.model.CareApplyVO;
 import com.requesttab.model.RequestTabVO;
 import com.utils.RequestSearchUtils;
 import com.utils.SQLUtil;
 
+@Repository
 public class CareRequestDAOImpl implements CareRequestDAO {
 
 	static {

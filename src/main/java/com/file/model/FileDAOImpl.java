@@ -12,25 +12,28 @@ import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-import com.utils.SQLUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
+import com.utils.SQLUtil;
+@Repository
 public class FileDAOImpl implements FileDAO {
 
 	// DataSource
-	private static DataSource ds = null;
-	static {
-		try {
-			Context ctx = new InitialContext();
-			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/group6");
-		} catch (NamingException ne) {
-			ne.printStackTrace();
-		}
-	}
+	@Autowired
+	private DataSource ds;
+	
+//	private static DataSource ds = null;
+//	static {
+//		try {
+//			Context ctx = new InitialContext();
+//			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/group6");
+//		} catch (NamingException ne) {
+//			ne.printStackTrace();
+//		}
+//	}
 
 	// 新增申請者的照片
 	private static final String INSERT_FILE_STMT = "INSERT INTO FILE (CARER_ID, FILE_TYPE_NO, FILE_CONTENT) VALUES (?, ?, ?)";

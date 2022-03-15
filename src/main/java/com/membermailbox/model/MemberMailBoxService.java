@@ -2,12 +2,14 @@ package com.membermailbox.model;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
 public class MemberMailBoxService {
-	MemberMailBoxDAO dao;
 	
-	public MemberMailBoxService() {
-		dao = new MemberMailBoxJDBCDAO();
-	}
+	@Autowired
+	private MemberMailBoxDAO dao;
 	
 	// 依收件者ID 瀏覽所有信件、瀏覽單一信件
 	public List<MemberMailBoxVO> getMemberMaillBoxVO(Integer receiveMemId) {

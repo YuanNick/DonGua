@@ -2,20 +2,16 @@ package com.auth.model;
 
 import java.util.List;
 
-import com.function.model.FunctionDAO;
-import com.function.model.FunctionJDBCDAO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 
-
+@Service
 public class AuthService {
-
-	private AuthDAO authdao;
-	private FunctionDAO functiondao;
 	
-	public AuthService() {
-		authdao = new AuthJNDIDAO();
-		functiondao = new FunctionJDBCDAO();
-	}
+	// 刪除建構子 Ctrl+shift+o(整理沒用到的import)
+	@Autowired
+	private AuthDAO authdao;
 	
 	// 新增群組
 	public AuthVO addAuth(String empAuthNo,String functionNo,String empAuthName) {

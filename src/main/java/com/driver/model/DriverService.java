@@ -2,12 +2,14 @@ package com.driver.model;
 
 import java.util.List;
 
-public class DriverService {
-	private DriverJNDIDAO dao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-	public DriverService() {
-		dao = new DriverJNDIDAO();
-	}
+@Service
+public class DriverService {
+	
+	@Autowired
+	private DriverJNDIDAO dao;
 
 //	新增
 	public DriverVO addDriver(String driverName, String driverPhone, String carNumber, String driverEmail,

@@ -14,20 +14,26 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
 import com.driveorder.model.dao.DriveOrderDAO;
 import com.driveorder.model.vo.DriveOrderVO;
 
+@Repository
 public class DriveOrderJNDIDAOImpl implements DriveOrderDAO {
 	
+	@Autowired
 	private static DataSource ds = null;
-	static {
-		try {
-			Context ctx = new InitialContext();
-			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/DaliyWarm");
-		} catch (NamingException e) {
-			e.printStackTrace();
-		}
-	}
+	
+//	static {
+//		try {
+//			Context ctx = new InitialContext();
+//			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/DaliyWarm");
+//		} catch (NamingException e) {
+//			e.printStackTrace();
+//		}
+//	}
 	
 	private static final String INSERT_STMT = "INSERT INTO DRIVE_ORDER (MEM_ID,DRIVER_ID,START_POINT,END_POINT,DISTANCE,SEND_DRIVE_DATE,SEND_DRIVE_TIME,ORDER_AMOUNT,CONTACT_NAME,CONTACT_NUMBER) SELECT * FROM (SELECT ?,?,?,?,?,?,?,?,?,?) AS TMP WHERE NOT EXISTS (SELECT * FROM DRIVE_ORDER WHERE DRIVER_ID = ? AND SEND_DRIVE_DATE = ? AND SEND_DRIVE_TIME = ?)LIMIT 1";
 	private static final String UPDATE = "UPDATE DRIVE_ORDER SET DRIVER_ID = ?,SEND_DRIVE_DATE = ?,SEND_DRIVE_TIME = ?,CONTACT_NAME = ?,CONTACT_NUMBER = ?,ORDER_STATUS = ?,DRIVE_FEEDBACK = ?,UPDATE_TIME = ? WHERE DRIVE_ORDER_ID = ?";

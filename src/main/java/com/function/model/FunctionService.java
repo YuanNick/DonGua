@@ -2,14 +2,14 @@ package com.function.model;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class FunctionService {
 	
+	@Autowired
 	private FunctionJDBCDAO dao;
-	
-	public FunctionService() {
-		dao = new FunctionJDBCDAO();
-	}
 		
 	public List<FunctionVO> getAllFunction(){
 		return dao.getAll();

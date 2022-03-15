@@ -8,17 +8,23 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class FunctionJDBCDAO implements FunctionDAO {
 
-	private static DataSource ds = null;
-	static {
-		try {
-			Context ctx = new InitialContext();
-			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/DaliyWarm");
-		} catch (NamingException e) {
-			e.printStackTrace();
-		}
-	}
+	@Autowired
+	private DataSource ds;
+	
+//	static {
+//		try {
+//			Context ctx = new InitialContext();
+//			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/DaliyWarm");
+//		} catch (NamingException e) {
+//			e.printStackTrace();
+//		}
+//	}
 	
 	private static final String GET_ALL_FUNCTION = "SELECT FUNCTION_NO,FUNCTION_NAME FROM CFA104G6.FUNCTION";
 

@@ -12,17 +12,23 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class AuthJNDIDAO implements AuthDAO {
 
-	private static DataSource ds = null;
-	static {
-		try {
-			Context ctx = new InitialContext();
-			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/DaliyWarm");
-		} catch (NamingException e) {
-			e.printStackTrace();
-		}
-	}
+	@Autowired
+	private DataSource ds;
+	
+//	static {
+//		try {
+//			Context ctx = new InitialContext();
+//			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/DaliyWarm");
+//		} catch (NamingException e) {
+//			e.printStackTrace();
+//		}
+//	}
 
 	private static final String INSERT_STMT = "INSERT INTO AUTH (EMP_AUTH_NO,FUNCTION_NO,EMP_AUTH_NAME) VALUES (?, ?, ?)"; // 新增群組
 	private static final String UPDATE_FUNCTION = "UPDATE AUTH SET FUNCTION_NO = ?,WHERE EMP_AUTH_NO = ?"; // 更新群組功能

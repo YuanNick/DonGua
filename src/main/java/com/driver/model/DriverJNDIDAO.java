@@ -7,22 +7,24 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class DriverJNDIDAO implements DriverDAO {
+	@Autowired
+	private DataSource ds;
 	
-	private static DataSource ds = null;
-	static {
-		try {
-			Context ctx = new InitialContext();
-			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/DaliyWarm");
-		} catch (NamingException e) {
-			e.printStackTrace();
-		}
-	}
+//	static {
+//		try {
+//			Context ctx = new InitialContext();
+//			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/DaliyWarm");
+//		} catch (NamingException e) {
+//			e.printStackTrace();
+//		}
+//	}
 	
 	private static final String INSERT_STMT = 
 			"INSERT INTO DRIVER (DRIVER_NAME,DRIVER_PHONE,CAR_NUMBER,DRIVER_EMAIL,SERVICE_STATUS)VALUES(?,?,?,?,?)";

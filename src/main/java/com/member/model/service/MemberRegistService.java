@@ -2,19 +2,26 @@ package com.member.model.service;
 
 
 import org.apache.taglibs.standard.lang.jstl.test.beans.PublicBean1;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import com.carer.model.dao.CarerDAO;
 import com.carer.model.dao.impl.CarerDAOImpl;
 import com.google.gson.Gson;
 import com.mail.model.service.SendRegistMailService;
+import com.member.model.dao.MemberDao;
 import com.member.model.dao.impl.MemberDaoImpl;
 import com.member.model.vo.MemberRegistVO;
 
-
+@Service
 public class MemberRegistService {
-	
+	@Autowired
+	private MemberDao dao;
+	@Autowired
+	private CarerDAO carerDao;
 	public int insertMemberRegist(String RegistJson) {
-		MemberDaoImpl dao = new MemberDaoImpl();
-		CarerDAOImpl carerDao = new CarerDAOImpl();
+//		MemberDaoImpl dao = new MemberDaoImpl();
+//		CarerDAOImpl carerDao = new CarerDAOImpl();
 		Gson gson = new Gson();
 		MemberRegistVO memberRegist = new MemberRegistVO();
 	    memberRegist = gson.fromJson(RegistJson, MemberRegistVO.class);/*將JSON字串塞入memberRegist物件*/

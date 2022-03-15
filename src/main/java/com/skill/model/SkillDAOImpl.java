@@ -12,8 +12,10 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-import com.careskills.model.CareSkillsVO;
+import org.springframework.stereotype.Repository;
 
+import com.careskills.model.CareSkillsVO;
+@Repository
 public class SkillDAOImpl implements SkillDAO {
 
 	// DataSource
